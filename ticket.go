@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-// Ticket is a zammad ticket.
+// Ticket is a Zammad ticket.
 type Ticket struct {
 	Title                 string        `json:"title"`
 	Group                 string        `json:"group"`
@@ -21,7 +21,7 @@ type Ticket struct {
 	OrganizationID        int           `json:"organization_id"`
 	Number                string        `json:"number,omitempty"`
 	Customer              string        `json:"customer,omitempty"`
-	CustomerID            int           `json:"customer_id,omitempty"`
+	CustomerID            CustomerID    `json:"customer_id,omitempty"`
 	LastContactAt         time.Time     `json:"last_contact_at,omitempty"`
 	LastContactAgentAt    time.Time     `json:"last_contact_agent_at,omitempty"`
 	LastContactCustomerAt time.Time     `json:"last_contact_customer_at,omitempty"`
