@@ -27,11 +27,7 @@ func (tr *Result[T]) Next() bool {
 	tr.opts.page++
 	tr.res = res
 
-	if len(res) == 0 {
-		return false
-	}
-
-	return true
+	return len(res) != 0
 }
 
 // Fetch returns the current slice of results and the last error encountered.
