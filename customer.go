@@ -49,6 +49,17 @@ func (c *CustomerID) UnmarshalJSON(data []byte) error {
 	if err := json.Unmarshal(data, &value); err != nil {
 		return err
 	}
+
+	if value == nil {
+		return nil
+	}
+
+	// JSON numbers are decoded as float64
+	if i, ok := value.(float64); ok {
+		c.Value = int(i)
+		return nil
+	}
+
 	c.Value = value
 	return nil
 }

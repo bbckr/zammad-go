@@ -81,7 +81,7 @@ func TestCustomerID_UnmarshalJSON(t *testing.T) {
 		input string
 		want  interface{}
 	}{
-		{name: "should unmarshal int", input: "123", want: float64(123)},
+		{name: "should unmarshal int", input: "123", want: 123},
 		{name: "should unmarshal null", input: "null", want: nil},
 		{name: "should unmarshal string", input: "\"guess:{hello@example.com}\"", want: "guess:{hello@example.com}"},
 	}

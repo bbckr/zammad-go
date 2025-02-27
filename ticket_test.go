@@ -57,6 +57,7 @@ var ticketTests = []struct {
 }{
 	{"ticketlist.json", "TicketList", 2},
 	{"ticketsearch.json", "TicketSearch", 3},
+	{"ticketcreate.json", "TicketCreate", 1},
 }
 
 func TestTicket(t *testing.T) {
@@ -77,6 +78,18 @@ func TestTicket(t *testing.T) {
 				ts, err := z.TicketSearch("does-not-matter", 0)
 				if len(ts) != tt.Expect {
 					t.Errorf("expected %d tickets, got %d", tt.Expect, len(ts))
+				}
+				outerr = err
+			case "TicketCreate":
+				ticket, err := z.TicketCreate(Ticket{CustomerID: CustomerID{Value: "does-not-matter"}})
+				if err != nil {
+					t.Errorf("failed to get ticket: %s", err)
+				}
+				if ticket.ID != 12 {
+					t.Errorf("expected ticket id 12, got %d", ticket.ID)
+				}
+				if ticket.CustomerID.Value != 28 {
+					t.Errorf("expected ticket customer id 28, got %s", ticket.CustomerID.Value)
 				}
 				outerr = err
 			}
